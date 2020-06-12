@@ -129,3 +129,15 @@ while (yes):
 	print("f")
 	print("g")
 	break
+
+
+
+"""
+Recursive Function
+
+"""
+def myfunc(y):
+	y += 1
+	if y < 9:
+		myfunc(y)
+	print(y)
