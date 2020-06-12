@@ -141,3 +141,45 @@ def myfunc(y):
 	if y < 9:
 		myfunc(y)
 	print(y)
+
+
+""" 
+Working with strings
+"""
+gender = False
+greeting = "hello"
+name = "Sachin"
+m = "male"
+f = "female"
+age = 19
+#Inefficient way (with error: Can't add int to string)
+#message = greeting + " " + name + ". You are " + age + "years old."
+
+'''
+Better way: use f"words {variable or logic}"
+alternative:
+"words {}, {}".format(var1, var2)
+
+'''
+message = f"{greeting} {name}. You are {age*12} months old."
+msg2 = "{} {}. You are {} months old".format(greeting, name, age*12)
+print(message)
+
+# STRING INDEXING
+'''
+Strings can be indexed like lists
+
+string[x:y:z]
+x = start point (inclusive)
+y = end point (non-inclusive)
+z = interval (default =1, -1 = backwards)
+any of the positions can be left blank
+'''
+greeting[0] # = "h"
+greeting[:3] # = "hel"
+greeting[1:3] # = "el" note: doesnt include the second l (index [3])
+greeting[1:] # = "ello"
+greeting[0:3:2] # = "hl" prints every other letter: 0,2
+greeting[::-1] # = "olleh", start and end left blank
+greeting[-1] # = "o" negative indeces start with -1 = last element, -2 = second to last...
+greeting[1:-2] # = "el" negative indeces can be used with positive ones.
