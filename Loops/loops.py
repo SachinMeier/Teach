@@ -25,9 +25,11 @@ def loop_for_1():
 
 	
 	"""
+	sum_of_list = 0
 	for x in list_int:
-		print(x) # prints 3 then 1 then 2 4 5
-
+		sum_of_list += x
+		#print(x) # prints 3 then 1 then 2 4 5
+	print(sum_of_list)
 
 def loop_for_2():
 	"""
@@ -52,9 +54,10 @@ def loop_for_3():
 	"""
 	for i in range(10):
 		print(i)
+	for i in range(5, 15):
+		print(i)
 	for i in range(5, 15, 2):
 		print(i)
-
 
 def loop_while_1():
 	"""
@@ -73,10 +76,6 @@ def loop_while_1():
 		print("f")
 		print("g")
 		y -= 1 # this decrements y by 1 each time. y -= 1 is equivalent to y = y - 1
-		
-
-#recursiveFunc(0) # prints 9 8 7 6 5 4 3 2 1 
-
 """
 Other loop keywords:
 
@@ -107,10 +106,10 @@ for each time through the exterior loop.
 """
 def nested_loop():
 	a = "asdf"
-	for i in range(10):
-		print(i, end=' ') #prints i with no newline at the end, just a space.
-		for s in a:
-			print(s, end=' ') # prints each letter in the string a
+	for y in range(4):
+		print(y, end=' ') #prints i with no newline at the end, just a space.
+		for letter in a:
+			print(letter, end=' ') # prints each letter in the string a
 		print("") # prints a newline
 
 def nested_loop_2():
@@ -123,3 +122,5 @@ def nested_loop_2():
 		for j in i: # j will be each item in i, an integer
 			print(j, end=' ')
 		print("") 
+
+nested_loop_2()
