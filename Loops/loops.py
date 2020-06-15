@@ -56,7 +56,7 @@ def loop_for_3():
 		print(i)
 
 
-def loop_while():
+def loop_while_1():
 	"""
 	A While loop executes an infinite number of times, so long as its condition is true:
 	while (BOOL STATEMENT):
@@ -84,13 +84,42 @@ break: as seen in previous func, terminates the single most immediate loop
 
 continue: terminates the single most immediate iteration. the loop starts from the top
 """
-while True: # True is a value, not a variable. 
-	print("s")
-	print("a")
-	break # break ends the most immediate loop, so it only executes once
-	# if you comment this break statement out, it will print these letters infinitely
-z = 10
-while z > 0:
-	print("yes")
-	continue	# continue causes the loop to restart from here. so it will nevver print no. 
-	print("no")
+def loop_while_2():
+	while True: # True is a value, not a variable. 
+		print("s")
+		print("a")
+		break # break ends the most immediate loop, so it only executes once
+		# if you comment this break statement out, it will print these letters infinitely
+def loop_while_3():
+	z = 10
+	while z > 0:
+		print("yes")
+		continue	# continue causes the loop to restart from here. so it will nevver print no. 
+		print("no")
+
+"""
+NESTING Loops
+
+Loops can be placed inside loops as many times as needed.
+Each loop still operates the same way. Interior loops go through fully 
+for each time through the exterior loop.
+
+"""
+def nested_loop():
+	a = "asdf"
+	for i in range(10):
+		print(i, end=' ') #prints i with no newline at the end, just a space.
+		for s in a:
+			print(s, end=' ') # prints each letter in the string a
+		print("") # prints a newline
+
+def nested_loop_2():
+	"""
+	prints a phone-like grid
+	"""
+	# list of 3 lists of 3 numbers. can be seen as 3x3 grid
+	list_of_lists = [[1,2,3],[4,5,6],[7,8,9]] 
+	for i in list_of_lists: # i will be each item in l_of_l, so i will be a list object
+		for j in i: # j will be each item in i, an integer
+			print(j, end=' ')
+		print("") 
