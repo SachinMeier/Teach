@@ -124,10 +124,10 @@ def recursiveFunc(y):
 	y=1	  y=2	y=3	  y=4  
 	"""
 	y += 1
+	print(y, end=' ')
 	if y < 9:
 		recursiveFunc(y)
-	print(y, end=' ')
-
+	
 def fibonacci(limit=15):
 	"""
 	Non-recursive fibonacci function
@@ -144,7 +144,7 @@ def recursiveFib(a, b, lim=15):
 	"""
 	recursive version of a fibonacci function
 	"""
-	if lim:
+	if lim > 0:
 		c = a 
 		a += b
 		b = c
@@ -242,9 +242,12 @@ def sum_of_5(a,b,c=0,d=0,e=0):
 	"""
 	return a + b + c + d + e
 # EX. 
-# print(sum_of_5(1,2,3,4,5)) # prints 15
-# x = sum_of_5(1,2,3,4) # x = 10
-# x = sum_of_5(1,2,3) # x = 6
-# x = sum_of_5("a", "b", "c", "d", "e") # x = "abcde"
-# x = sum_of_5("a", "b") # ERROR: cant add int and str
+print(sum_of_5(1,2,3,4,5)) # prints 15
+x = sum_of_5(1,2,3,4) # x = 10
+x = sum_of_5(1,2,3) # x = 6
+x = sum_of_5("a", "b", "c", "d", "e") # x = "abcde"
+x = sum_of_5("a", "b") # ERROR: cant add int and str
 
+if __name__ == "__main__":
+	
+	

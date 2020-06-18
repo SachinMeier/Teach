@@ -1,6 +1,16 @@
 FILENAME = "data.txt"
 BINFILE = "data2.dat"
+"""
+Modes:
+"r" +
+"w" +
+"rb"
+"wb"
+"a"
 
+
+
+"""
 #TEXT
 def readfile(filename):
 	with open(filename, "r") as fp:
@@ -26,9 +36,4 @@ def writebinfile(filename, data):
 
 
 if __name__ == "__main__":
-	#readfile(FILENAME)
-	#appendfile(FILENAME, "hello world")
-	# writebinfile(BINFILE, b"\x68\x65\x6c\x6c\x6f")
-	# print(readbinfile(BINFILE))
-	print("hello \"Ahsan\"")
-	# hello "Ahsan"
+	appendfile(FILENAME, "Hello Nick")

@@ -24,11 +24,10 @@ def read_data_naive(filename):
 			person.append(int(t)) # make t an int
 		# add the person's scores list to the scores list
 		scores.append(person) 
-
+	return scores
 """
 since s.split(" ") returns a full list, we can use it in the for loop
 """
-
 def read_data_better(filename):
 	with open(filename, "r") as fp:
 		#data is now a list strings of each line
@@ -39,7 +38,7 @@ def read_data_better(filename):
 		for t in s.split(" "): # a for loop with 1 command is lame. 2 lines for 1 command??
 			person.append(int(t))
 		scores.append(person) 
-
+	return scores
 def read_data_efficient(filename):
 	with open(filename, "r") as fp:
 		data = fp.readlines()
@@ -47,14 +46,14 @@ def read_data_efficient(filename):
 	for s in data:
 		# this line uses an in-line for loop. it just saves space. it does the a
 		scores.append([int(t) for t in s.split(" ")])
-
+	return scores
 def read_data_wicked_fast(filename):
-	
 	with open(filename, "r") as fp:
 		data = fp.readlines()
 	# DOUBLE IN-LINE FOR LOOP!!!!
 	scores = [[int(t) for t in s.split(" ")] for s in data]
-	print(scores)
+	
+	return scores
 
-
-read_data("Files/scores.txt")
+if __name__ == "__main__":
+	read_data_wicked_fast("Files/scores.txt")
