@@ -59,6 +59,11 @@ class Person:
 		""" returns the person's name """
 		return self.name
 
+	def get_age(self):
+		""" return the person's age """
+		return self.age
+
+
 """
 Now, we can instantiate the Person class by creating a Person!
 """
@@ -104,8 +109,12 @@ class Student(Person):
 			grade = "Senior"
 		else:
 			grade = "Graduated"
-		return f"Student:\nName: {self.name}\nAge: {self.age}\nYear: {grade}"
+		result = super().__repr__()
+		return f"Student:\n{result}\nYear: {grade}"
 	
+	def get_year(self):
+		return self.year
+
 	def update_gpa(self, newGPA):
 		"""
 		add a new Gpa to the list of GPAs.
@@ -116,7 +125,14 @@ class Student(Person):
 		"""
 		calculate the average of all GPAs in self.gpas
 		"""
-		raise NotImplementedError("Not Implemented")
+		#result = sum(self.gpas) / len(self.gpas)
+		gSum = 0
+		count = 0
+		for i in self.gpas:
+			gSum += i
+			count += 1
+		return gSum / count
+		#raise NotImplementedError("Not Implemented")
 
 	def add_club(self, club):
 		"""
