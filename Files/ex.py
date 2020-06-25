@@ -10,7 +10,7 @@ def read_data_naive(filename):
 	with open(filename, "r") as fp:
 		#data is now a list strings of each line
 		data = fp.readlines()
-	# print(data)
+	#print(data)
 	# create an empty list
 	scores = []
 	# each line is a person's scores
@@ -18,6 +18,7 @@ def read_data_naive(filename):
 		# split each line along the spaces, now list 1 should =
 		# ['94', '73', '72', '88', '75', '62', '92', '74', '99']
 		string_list = s.split(" ")
+		#print(string_list)
 		# an empty list, reused each time
 		person = []
 		for t in string_list: # t is the string '94', then '73'...
@@ -52,8 +53,35 @@ def read_data_wicked_fast(filename):
 		data = fp.readlines()
 	# DOUBLE IN-LINE FOR LOOP!!!!
 	scores = [[int(t) for t in s.split(" ")] for s in data]
-	
 	return scores
 
+
+def get_student_avgs():
+	scores = read_data_wicked_fast("scores.txt")
+	avgs = []
+	for person in scores:
+		avg = sum(person) / len(person) 
+		avgs.append(avg)
+	return avgs
+
+def get_test_avg():
+	scores = read_data_wicked_fast("scores.txt")
+	student_count = len(scores)
+	tests_count = len(scores[0])
+	tests = []
+	for t in range(tests_count):
+		testSum = 0
+		for s in scores:
+			testSum += s[t]
+		tests.append(testSum/student_count)
+	return tests
+
 if __name__ == "__main__":
-	read_data_wicked_fast("Files/scores.txt")
+	a = [1,4,7,2,5,9,8,10,13]
+	aSum = 0
+	for i in a:
+		aSum += i
+		
+	print(aSum / len(a))
+		
+

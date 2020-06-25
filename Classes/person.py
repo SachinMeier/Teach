@@ -24,7 +24,6 @@ all classes should have a function called __init__(self, ARGS). init stands for 
 this is the function that executes the creation of an instance/object.
 It initializes an instance of the class.
 
-
 """
 
 class Person:
@@ -63,12 +62,15 @@ class Person:
 		""" return the person's age """
 		return self.age
 
+	def get_months(self):
+		return self.age * 12
+
 
 """
 Now, we can instantiate the Person class by creating a Person!
 """
 # alex = Person("Alex", 18)
-# print(alex)
+# print(alex.age)
 
 """
 INHERITANCE:
