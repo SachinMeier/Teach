@@ -55,6 +55,16 @@ def read_data_wicked_fast(filename):
 	scores = [[int(t) for t in s.split(" ")] for s in data]
 	return scores
 
+def read_people(filename):
+	with open(filename, "r") as fp:
+		data = fp.readlines()
+	people = []
+	for person in data:
+		person = person.split(" ")
+		people.append( [person[0], int(person[1])] )
+	return people
+
+
 
 def get_student_avgs():
 	scores = read_data_wicked_fast("scores.txt")
@@ -77,11 +87,6 @@ def get_test_avg():
 	return tests
 
 if __name__ == "__main__":
-	a = [1,4,7,2,5,9,8,10,13]
-	aSum = 0
-	for i in a:
-		aSum += i
-		
-	print(aSum / len(a))
+	print(read_people("Files/people.txt"))
 		
 

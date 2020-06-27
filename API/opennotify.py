@@ -11,8 +11,14 @@ import requests
 
 OPEN_NOTIFY_URL = "http://api.open-notify.org/"
 OPEN_GEOCODE_URL = "http://open.mapquestapi.com/geocoding/v1/reverse"
-MAPQUEST_KEY = "k8VfHQEvKkczv77dQnMG9nJq4QJAoir5"
-MAPQUEST_SECRET = "8gqkaAlfkArzB41X"
+
+
+def get_key(filename):
+	with open(filename, "r") as fp:
+		key = fp.readline()
+	return key
+
+MAPQUEST_KEY = get_key("key.pem")
 
 def call_api(url, params):
 	# construct full URL from base and endpoint
