@@ -33,8 +33,35 @@ def get_names():
 			fp.write(f"{n}, {c}, {f}\n")
 
 
-
-
+def get_info():
+	with open("CC2.html", "r") as fp:
+		soup = BeautifulSoup(fp, 'html.parser')
+	with open("info2.txt", "w") as fp2:
+		# elegant-profile-panel-description-wrapper
+		for person in soup.find_all('div', 'fusion-column-wrapper'):
+			
+			# Name
+			#try: 
+			name = person.find('h3').get_text()
+			# except AttributeError:
+			# 	name = ""
+			#County
+			try: 
+				# get('p', 'elegant-profile-panel-description')
+				county = person.find('p').get_text()
+			except AttributeError:
+				county = ""
+			# Facebook
+			try: 
+				fb = person.find('a', 'fusion-social-network-icon fusion-tooltip fusion-facebook fusion-icon-facebook').get('href')
+			except AttributeError:
+				 fb = ""
+				#Website
+			try: 
+				web = person.find('a', 'fusion-social-network-icon fusion-tooltip fusion-Website fusion-icon-Website').get('href')
+			except AttributeError:
+				web = ""
+			fp2.write(f"{name}, {county}, {fb}, {web}\n" )
 
 if __name__ == "__main__":
-	get_names()
+	get_info()
