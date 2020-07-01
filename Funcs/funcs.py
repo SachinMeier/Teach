@@ -242,12 +242,17 @@ def sum_of_5(a,b,c=0,d=0,e=0):
 	"""
 	return a + b + c + d + e
 # EX. 
-print(sum_of_5(1,2,3,4,5)) # prints 15
-x = sum_of_5(1,2,3,4) # x = 10
-x = sum_of_5(1,2,3) # x = 6
-x = sum_of_5("a", "b", "c", "d", "e") # x = "abcde"
-x = sum_of_5("a", "b") # ERROR: cant add int and str
+# print(sum_of_5(1,2,3,4,5)) # prints 15
+# x = sum_of_5(1,2,3,4) # x = 10
+# x = sum_of_5(1,2,3) # x = 6
+# x = sum_of_5("a", "b", "c", "d", "e") # x = "abcde"
+# x = sum_of_5("a", "b") # ERROR: cant add int and str
 
 if __name__ == "__main__":
-	
+	s1 = "the quick brown fox jumps over the lazy dog"
+	s2 = "mary had a little lamb"
+	s3 = "ahsan is a master programmer"
+	s4 = "the rain in spain stays mainly in the plains"
+	for i in [s1, s2, s3, s4]:
+		print(letter_count(i))
 	
