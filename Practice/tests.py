@@ -1,6 +1,6 @@
 import unittest
 import work
-# import answers
+# import work
 
 class PracticeTests(unittest.TestCase):
 	def test_ex_1(self):
