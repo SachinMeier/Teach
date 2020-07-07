@@ -97,7 +97,7 @@ class PracticeTests(unittest.TestCase):
 				[5, 0, 0, 0, 2, 0, 0, 2, 6, 0, 0, 2, 1, 6, 0, 2, 0, 1, 4, 3, 0, 0, 0, 0, 2, 0]]
 		try:
 			for i in range(4):
-				self.assertEqual(work.ex_9(s[i], a[i]))
+				self.assertEqual(work.ex_9(s[i]), a[i])
 
 		except NotImplementedError:
 			raise NotImplementedError("Not answered yet.")
@@ -143,13 +143,13 @@ class PracticeTests(unittest.TestCase):
 				"mary had a little lamb",
 				"ahsan is a master programmer",
 				"the rain in spain stays mainly in the plains"]
-		a = [s[0][:int(len(s[0])/2)] + s[1][int(len(s[1])):],
-			 s[1][:int(len(s[1])/2)] + s[2][int(len(s[2])):],
-			 s[2][:int(len(s[2])/2)] + s[3][int(len(s[3])):]
+		a = [s[0][:len(s[0])//2] + s[1][len(s[1])//2:],
+			 s[1][:len(s[1])//2] + s[2][len(s[2])//2:],
+			 s[2][:len(s[2])//2] + s[3][len(s[3])//2:]
 		]
 		try:
 			for i in range(3):
-				self.assertEqual(work.ex_12(s[i], s[i+1]), a[i])
+				self.assertEqual(work.ex_13(s[i], s[i+1]), a[i])
 
 
 		except NotImplementedError:
@@ -165,17 +165,16 @@ class PracticeTests(unittest.TestCase):
 			 s[2][::2] + s[3][::2] + s[0][::2]]
 		try:
 			for i in range(3):
-				self.assertEqual(work.ex_12(s[i], s[i+1]), a[i])
+				self.assertEqual(work.ex_14(s[i], s[i+1], s[(i+2)%4]), a[i])
 
 
 		except NotImplementedError:
 			raise NotImplementedError("Not answered yet.")
 		
-
 	def test_ex_15(self):
 		try:
-			self.assertTrue(19, 3, 37, 4)
-			self.assertFalse(19, 3, 24, 6)
+			self.assertTrue(work.ex_15(19, 3, 37, 4))
+			self.assertFalse(work.ex_15(19, 3, 24, 6))
 		except NotImplementedError:
 			raise NotImplementedError("Not answered yet.")
 
@@ -187,8 +186,12 @@ class PracticeTests(unittest.TestCase):
 			raise NotImplementedError("Not answered yet.")
 
 	def test_ex_17(self):
-		a = [i for i in range(3, 60,3)]
+		a = [i for i in range(0, 60, 3)]
 		try:
 			self.assertEqual(a, work.ex_17())
 		except NotImplementedError:
 			raise NotImplementedError("Not answered yet.")
+
+
+if __name__ == "__main__":
+	unittest.main()

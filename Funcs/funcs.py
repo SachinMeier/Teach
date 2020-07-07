@@ -248,11 +248,84 @@ def sum_of_5(a,b,c=0,d=0,e=0):
 # x = sum_of_5("a", "b", "c", "d", "e") # x = "abcde"
 # x = sum_of_5("a", "b") # ERROR: cant add int and str
 
+def insert_sort(l):
+	''' Sort a list in descending order (max first)'''
+	result = []
+	for i in l:
+		idx = 0 # where to place i in result
+		for r in result:
+			if r > i: # Flip this for ascending order
+				idx += 1
+		result.insert(idx, i)
+	return result
+
+def binary_search(l, val):
+	''' 
+	Search a sorted list l for value val. 
+	return index of value in list
+	return -1 if not found
+	'''
+	start = 0
+	end = len(l)
+	mid = (start + end) // 2
+	while start <= end and mid < len(l):
+		if l[mid] > val:
+			end = mid-1
+		elif l[mid] < val:
+			start = mid+1
+		else:
+			return mid
+		# print(mid)
+		mid = (start + end) // 2
+		
+	return -1
+
+def rec_bin_search(l, val):
+	return recursive_bin_search(0, len(l), l, val)
+
+def recursive_bin_search(start, end, l, val):
+	if start <= end:
+		mid = (start + end )// 2
+		if mid >= len(l) or mid < 0:
+			return -1
+		if l[mid] > val:
+			return recursive_bin_search(start, mid-1, l, val)
+		elif l[mid] < val:
+			return recursive_bin_search(mid+1, end, l, val)
+		else:
+			return mid
+	else:
+		return -1
+
+
+
+
+
 if __name__ == "__main__":
-	s1 = "the quick brown fox jumps over the lazy dog"
-	s2 = "mary had a little lamb"
-	s3 = "ahsan is a master programmer"
-	s4 = "the rain in spain stays mainly in the plains"
-	for i in [s1, s2, s3, s4]:
-		print(letter_count(i))
-	
+	li = [1,2,3,4,5,6,7,8,12,14,16,18]
+	l2 = [1,2,3,4]
+	print(rec_bin_search(li, 1))
+	print(rec_bin_search(li, 2))
+	print(rec_bin_search(li, 3))
+	print(rec_bin_search(li, 4))
+	print(rec_bin_search(li, 5))
+	print(rec_bin_search(li, 6))
+	print(rec_bin_search(li, 7))
+	print(rec_bin_search(li, 8))
+	print(rec_bin_search(li, 12))
+	print(rec_bin_search(li, 14))
+	print(rec_bin_search(li, 16))
+	print(rec_bin_search(li, 18))
+	print(rec_bin_search(li, 22))
+	print(rec_bin_search(li, 0))
+	print(rec_bin_search(li, 9))
+	print(rec_bin_search(li, 13))
+	print(rec_bin_search(l2, 1))
+	print(rec_bin_search(l2, 2))
+	print(rec_bin_search(l2, 3))
+	print(rec_bin_search(l2, 4))
+	print(rec_bin_search(l2, 5))
+	print(rec_bin_search(l2, 0))
+	print(rec_bin_search(l2, 1.5))
+
+
