@@ -192,6 +192,48 @@ class PracticeTests(unittest.TestCase):
 		except NotImplementedError:
 			raise NotImplementedError("Not answered yet.")
 
+	def test_ex_18(self):
+		inputs = [[1,9,2,4, 77, 21, 91, 22],
+					[99, 22, 18, 94, 102, 111],
+					[1],
+					[1,2,3,4,5,6,7,8,9,10],
+					[100, 122, 133, 144]]
+		for inp in inputs:
+			for j in range(len(inp)):
+				self.assertGreaterEqual(inp[j], inp[j+1])
+
+	def test_ex_19(self):
+		inputs = [[1,9,2,4, 77, 21, 91, 22],
+					[99, 22, 18, 94, 102, 111],
+					[1],
+					[1,2,3,4,5,6,7,8,9,10],
+					[100, 122, 133, 144]]
+		for inp in inputs:
+			ans = work.ex_19(inp)
+			for j in range(len(inp)):
+				self.assertGreaterEqual(ans[j], ans[j+1])
+	def test_ex_20(self):
+		inputs = [[1,9,2,4, 77, 21, 91, 22],
+					[99, 22, 18, 94, 102, 111],
+					[1],
+					[1,2,3,4,5,6,7,8,9,10],
+					[100, 122, 133, 144]]
+		for inp in inputs:
+			ans = work.ex_20(inp)
+			for j in range(len(inp)):
+				self.assertGreaterEqual(ans[j], ans[j+1])
+
+	def test_ex_21(self):
+		inputs = [[1,9,2,4, 77, 21, 91, 22],
+					[99, 22, 18, 94, 102, 111],
+					[1],
+					[1,2,3,4,5,6,7,8,9,10],
+					[100, 122, 133, 144]]
+		for inp in inputs:
+			inp.sort(reverse=True)
+			for j in inp:
+				self.assertEqual(work.ex_21(inp, j), inp.index(j))
+
 
 if __name__ == "__main__":
 	unittest.main()

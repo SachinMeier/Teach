@@ -277,8 +277,41 @@ def binary_search(l, val):
 			return mid
 		# print(mid)
 		mid = (start + end) // 2
-		
 	return -1
+
+def count_sorting(l):
+	result = []
+	for i in l:
+		count = 0
+		for r in result:
+			if i > r:
+				count += 1
+		result.insert(count, i)
+	return result
+
+def bubble_sorting(l):
+	""" Compares two values at a time and swaps them if in incorrect order"""
+	for x in l: # iterates the number of times we need to go through the list
+		for j in range(len(l)-1): # goes through the list and puts greatest number last
+			if l[j] > l[j+1]:
+				temp = l[j]
+				l[j] = l[j+1]
+				l[j+1] = temp
+	return l
+
+def selection_sorting(l):
+	""" selects greatest value from list and adds it to result until complete """
+	result = []
+	length = len(l)
+	for x in range(length):
+		maximum = 0
+		for j in range(len(l)):
+			if l[j] > l[maximum]:
+				maximum = j
+		result.insert(0, l.pop(maximum))
+	return result
+
+
 
 def rec_bin_search(l, val):
 	return recursive_bin_search(0, len(l), l, val)

@@ -52,6 +52,14 @@ def ex_17():
 
 
 
+if __name__ == "__main__":
+	list1 = [1,5,3,8,6,0, 19, 21]
+	print(selection_sorting(list1))
+	
+
+
+
+
 
 
 

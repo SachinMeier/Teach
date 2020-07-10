@@ -57,7 +57,17 @@ TASKS:
 	17) no args:
 		return list of the first 20 numbers divisible by 3
 	
-
+- logic
+	18) 1 list arg:
+		a bubble sorting function 
+	19) 1 list arg:
+		a selection sorting function 
+	20) 1 list arg:
+		a counting sorting function
+	21) 1 list arg, 1 int arg:
+		a binary search function that finds the int in the list.
+		returns -1 if not found
+	
 
 
 """
