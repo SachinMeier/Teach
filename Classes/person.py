@@ -65,6 +65,8 @@ class Person:
 	def get_months(self):
 		return self.age * 12
 
+	def have_child(self, name, age=0):
+		return Person(name, age)
 
 """
 Now, we can instantiate the Person class by creating a Person!
@@ -84,6 +86,8 @@ we inherit by including the parent class in parantheses.
 """
 
 class Student(Person):
+
+
 	
 	def __init__(self, name, age, year=1, gpas=[], clubs=[]):
 		# We pass the appropriate variables to "super()" which 
@@ -141,3 +145,26 @@ class Student(Person):
 		add a new Club to the list of Clubs.
 		"""
 		raise NotImplementedError("Not Implemented")
+
+
+class City:
+	def __init__(self, name, population):
+		self.name = name
+		self.population = population
+
+
+class Country:
+	def __init__(self, name, capital, gdp, population):
+		self.name = name
+		self.capital = capital
+		self.gdp = gdp
+		self.population = population
+
+	def gdp_per_capita(self):
+		return self.gdp/self.population 
+
+	def capital_pct_pop(self):
+		return self.capital.population/self.population
+
+
+

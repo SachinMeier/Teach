@@ -20,7 +20,7 @@ def get_key(filename):
 
 MAPQUEST_KEY = get_key("key.pem")
 
-def call_api(url, params):
+def call_api(url, params=None):
 	# construct full URL from base and endpoint
 	# url = BASE_URL + endpoint
 	# API requests can return Errors, so we must handle them
@@ -101,5 +101,4 @@ def find_location_of_iss():
 
 if __name__ == "__main__":
 	#print(get_status("iss-pass.json"))
-	data = find_location_of_iss()
-	print(data)
+	print(get_astronauts())
