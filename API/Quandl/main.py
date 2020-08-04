@@ -92,34 +92,37 @@ class Quandl:
 		endpoint = self.BASE_URL
 		endpoint += f"/{database_code}/{dataset_code}/data.{return_format}"
 		return self.call_api(endpoint, params=params)
-	
+
 	def write_to_sheet(self, database_code, dataset_code, sheet, row, col, params=None):
-		data = Q.get_timeseries(database_code, dataset_code, return_format=self.DEFAULT_FORMAT, params=params)["dataset_data"]
+		data = Q.get_timeseries(database_code, dataset_code, return_format=self.DEFAULT_FORMAT, params=params)
 		sheet.write(row,col,f"{database_code}/{dataset_code}")
 		row += 1
 		sheet.write(row, col, "Date")
-		sheet.write(row, col+1, dataset_code)
+		sheet.write(row, col+1, "Price")
 		row += 1
-		for d, p in data["data"]:
+		for d, p in data["dataset_data"]["data"]:
 			sheet.write(row, col, d)
 			sheet.write(row,col+1, p)
 			row += 1
-		
+		return row
 
 if __name__ == "__main__":
 	'''
-	silver price: from 2014-2015 weekly USD (AM)
-	LBMA/SILVER
+	Facebook weekly close prices from 2016-2018
+	date   price
+
+	chart. 
 	'''
 	Q = Quandl()
 	p = {
-		"column_index": 1,
+		"column_index": 4,
 		"collapse": "weekly",
 		"start_date": "2014-01-01",
 		"end_date": "2015-01-01"
 	}
-	data = Q.get_timeseries("LBMA", "SILVER", params=p)
-	data["dataset_data"]["data"][0][1]
+	data = Q.get_timeseries("WIKI", "FB", params=p)
+	#print(data["dataset_data"]["data"])
+
 
 
 
