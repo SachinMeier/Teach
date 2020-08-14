@@ -86,9 +86,6 @@ we inherit by including the parent class in parantheses.
 """
 
 class Student(Person):
-
-
-	
 	def __init__(self, name, age, year=1, gpas=[], clubs=[]):
 		# We pass the appropriate variables to "super()" which 
 		# is the parent class (Person). Student handles the gpas and clubs
@@ -99,6 +96,7 @@ class Student(Person):
 		self.gpas = gpas
 		# clubs is a list of strings
 		self.clubs = clubs
+		self.books = []
 
 	def __repr__(self):
 		"""
@@ -146,6 +144,33 @@ class Student(Person):
 		"""
 		raise NotImplementedError("Not Implemented")
 
+	def check_out_book(self, book):
+		book.check_out()
+		self.books.append(book.title)
+
+	def check_in_book(self, book):
+		book.check_in()
+		self.books.remove(book.title)
+
+"""
+Book: id#, title, author, year
+"""
+class Book:
+	def __init__(self, id_no, title, author, year):
+		self.id_no = id_no
+		self.title = title
+		self.author = author
+		self.year = year
+		self.checked_out = False
+
+	def check_out(self):
+		self.checked_out = True
+
+	def check_in(self):
+		self.checked_out = False
+
+
+
 
 class City:
 	def __init__(self, name, population):
@@ -165,6 +190,4 @@ class Country:
 
 	def capital_pct_pop(self):
 		return self.capital.population/self.population
-
-
 
