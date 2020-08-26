@@ -1,4 +1,4 @@
-
+from math import pi
 
 def day_of_week(d):
 	'''
@@ -7,14 +7,22 @@ def day_of_week(d):
 
 	d = int, day of week to return
 	'''
-	raise NotImplementedError
+	aDict = {0:"Sunday", 1:"Monday", 2:"Tuesday", 3:"Wednesday", 4:"Thursday", 5:"Friday", 6:"Saturday"}
+	return aDict[d]
+	# aList = ["Sunday", "Monday", "Tuesday", "Wednesday"]
+	# return aList[d]
+
 
 def median_of_list(ls):
 	'''
 	return the median of this list
 	ls = list provided
 	'''
-	raise NotImplementedError
+	count = len(ls)
+	if count % 2 == 1:
+		return ls[(count//2)]
+	else:
+		return (ls[(count//2)] + ls[(count//2) - 1])/ 2
 
 def build_str(i):
 	'''
@@ -33,7 +41,7 @@ def formula(x):
 	'''
 	return y if y = 2x + 1/2(x^2) - 3
 	'''
-	raise NotImplementedError
+	return 2*x + 0.5*(x**2) - 3
 
 def reverse(s):
 	'''
@@ -49,9 +57,10 @@ def get_evens(ls):
 
 def area(diameter):
 	'''
-	given the diameter of a circle, return the radius
+	given the diameter of a circle, return the area
 	'''
-	raise NotImplementedError
+	r = diameter/2
+	return pi*r**2
 
 def get_last_angle(a,b):
 	'''
@@ -80,3 +89,20 @@ def max_of_dict(d):
 	ex: d = {"a": 1, "b": 4, "c": 8} -> "c"
 	'''
 	raise NotImplementedError
+
+
+def max_of_list(ls):
+	m = 0
+	for i in range(len(ls)):
+		if ls[i] > ls[m]:
+			m = i
+	return m
+
+
+
+if __name__ == "__main__":
+	a = [[1,2,3,4,5],
+		[2,4,6,8],
+		[1,2]]
+	for i in a:
+		print(max_of_list(i))

@@ -1,5 +1,7 @@
 import requests
 import xlsxwriter as excel
+from datetime import datetime
+
 
 """
 GET https://www.quandl.com/api/v3/datasets/{database_code}/{dataset_code}/data.{return_format}
@@ -43,6 +45,8 @@ return
   }
 }
 """
+
+
 
 class Quandl:
 	BASE_URL = "https://www.quandl.com/api/v3/datasets"
@@ -120,9 +124,10 @@ if __name__ == "__main__":
 		"start_date": "2014-01-01",
 		"end_date": "2015-01-01"
 	}
-	data = Q.get_timeseries("WIKI", "FB", params=p)
+	#data = Q.get_timeseries("FRBP", "GDPPLUS", params=None)
 	#print(data["dataset_data"]["data"])
-
+	dt = datetime.strptime('1998-09-30', "%Y-%m-%d")
+	print(dt.timestamp())
 
 
 

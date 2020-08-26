@@ -123,4 +123,13 @@ def nested_loop_2():
 			print(j, end=' ')
 		print("") 
 
-nested_loop_2()
+#nested_loop_2()
+
+l = [3,1,3,6,5]
+s = "wordswords"
+
+
+for i in range(len(l)):
+	print(s[i])
+
+
