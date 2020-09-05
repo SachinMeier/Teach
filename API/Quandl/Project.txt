@@ -1,0 +1,16 @@
+Pseudo-Technical Analysis:
+
+1) Pick a NYSE stock or other metric. 
+2) Chart it on weekly intervals over at least 2 years.
+
+ex 1.
+	1) write a trendline algorithm to find a 4wk moving average
+	2) graph it alongside the actual data ( 2 different colors)
+	3) Add a Legend
+
+ex. 2
+	1) find the three biggest monthly (4wk) drops.
+	2) find a trendline of the 5 weeks before each those drops.
+
+ex. 3 
+	1) find the 3 highest local peaks of at least 4wks apart

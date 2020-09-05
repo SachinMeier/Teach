@@ -1,5 +1,7 @@
 import requests as r
 import xlsxwriter as excel
+from datetime import datetime
+
 
 """
 GET https://www.quandl.com/api/v3/datasets/{database_code}/{dataset_code}/data.{return_format}
@@ -43,6 +45,8 @@ return
   }
 }
 """
+
+
 
 class Quandl:
 	BASE_URL = "https://www.quandl.com/api/v3/datasets"
@@ -88,6 +92,7 @@ class Quandl:
 		endpoint = self.BASE_URL
 		endpoint += f"/{database_code}/{dataset_code}/data.{return_format}"
 		return self.call_api(endpoint, params=params)
+<<<<<<< HEAD
 	
 	def avg_price(self, data):
 		aSum = 0
@@ -113,38 +118,49 @@ class Quandl:
 		price = self.avg_price(data)
 		return change / price
 
+=======
+>>>>>>> a4f35b8092968a42e5b3b51268ef2de01afe69a6
 
 	def write_to_sheet(self, database_code, dataset_code, sheet, row, col, params=None):
-		data = Q.get_timeseries(database_code, dataset_code, return_format=self.DEFAULT_FORMAT, params=params)["dataset_data"]
+		data = Q.get_timeseries(database_code, dataset_code, return_format=self.DEFAULT_FORMAT, params=params)
 		sheet.write(row,col,f"{database_code}/{dataset_code}")
 		row += 1
 		sheet.write(row, col, "Date")
-		sheet.write(row, col+1, dataset_code)
+		sheet.write(row, col+1, "Price")
 		row += 1
-		for d, p in data["data"]:
+		for d, p in data["dataset_data"]["data"]:
 			sheet.write(row, col, d)
 			sheet.write(row,col+1, p)
 			row += 1
-		
+		return row
 
 if __name__ == "__main__":
 	'''
-	silver price: from 2014-2015 weekly USD (AM)
-	LBMA/SILVER
+	Facebook weekly close prices from 2016-2018
+	date   price
+
+	chart. 
 	'''
 	Q = Quandl()
 	p = {
-		"column_index": 1,
+		"column_index": 4,
 		"collapse": "weekly",
 		"start_date": "2014-01-01",
 		"end_date": "2015-01-01"
 	}
+<<<<<<< HEAD
 	gold = Q.get_timeseries("LBMA", "GOLD", params=p)
 	silv = Q.get_timeseries("LBMA", "SILVER", params=p)
 	#print(data["dataset_data"]["data"][0][1])
 	
 	print(Q.get_volatility(gold))
 	print(Q.get_volatility(silv))
+=======
+	#data = Q.get_timeseries("FRBP", "GDPPLUS", params=None)
+	#print(data["dataset_data"]["data"])
+	dt = datetime.strptime('1998-09-30', "%Y-%m-%d")
+	print(dt.timestamp())
+>>>>>>> a4f35b8092968a42e5b3b51268ef2de01afe69a6
 
 
 

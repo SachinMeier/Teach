@@ -6,3 +6,5 @@ API/**/key.pem
 API/Qandl/key.pem
 API/key.pem
 API/FRED/key.pem
+*.xlsx
+**/*.xlsx
