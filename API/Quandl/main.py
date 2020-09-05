@@ -1,4 +1,4 @@
-import requests
+import requests as r
 import xlsxwriter as excel
 
 """
@@ -59,9 +59,9 @@ class Quandl:
 		else:
 			params["api_key"] = self.key
 		try:
-			response = requests.get(url, params=params).json()
+			response = r.get(url, params=params).json()
 		except ValueError:
-			response = requests.get(url, params=params).content.decode('utf-8')
+			response = r.get(url, params=params).content.decode('utf-8')
 		except Exception as e:
 			response = e
 		return self.handle_response(response)
@@ -76,10 +76,6 @@ class Quandl:
 		else:
 			return response
 
-	@staticmethod
-	def get_key(filename):
-		with open(filename, "r") as fp:
-			return fp.readline()
 
 	def search(self, query):
 		endpoint = BASE_URL + DEFAULT_FORMAT
@@ -93,6 +89,31 @@ class Quandl:
 		endpoint += f"/{database_code}/{dataset_code}/data.{return_format}"
 		return self.call_api(endpoint, params=params)
 	
+	def avg_price(self, data):
+		aSum = 0
+		count = 0
+		for obj in data["dataset_data"]["data"]:
+			aSum += obj[1]
+			count += 1
+		return aSum/count
+
+	def avg_change(self, data):
+		aSum = 0
+		count = len(data["dataset_data"]["data"])-1
+		for idx in range(count):
+			d = data["dataset_data"]["data"][idx+1][1] - data["dataset_data"]["data"][idx][1]
+			aSum += d
+		return aSum/count
+		# for idx, obj in enumerate(data["dataset_data"]["data"]): # 	obj[1]
+		# 	data["dataset_data"]["data"][idx+1][1]
+
+	def get_volatility(self, data):
+		''' data is result of get_timeseries '''
+		change = self.avg_change(data)
+		price = self.avg_price(data)
+		return change / price
+
+
 	def write_to_sheet(self, database_code, dataset_code, sheet, row, col, params=None):
 		data = Q.get_timeseries(database_code, dataset_code, return_format=self.DEFAULT_FORMAT, params=params)["dataset_data"]
 		sheet.write(row,col,f"{database_code}/{dataset_code}")
@@ -118,8 +139,12 @@ if __name__ == "__main__":
 		"start_date": "2014-01-01",
 		"end_date": "2015-01-01"
 	}
-	data = Q.get_timeseries("LBMA", "SILVER", params=p)
-	data["dataset_data"]["data"][0][1]
+	gold = Q.get_timeseries("LBMA", "GOLD", params=p)
+	silv = Q.get_timeseries("LBMA", "SILVER", params=p)
+	#print(data["dataset_data"]["data"][0][1])
+	
+	print(Q.get_volatility(gold))
+	print(Q.get_volatility(silv))
 
 
 

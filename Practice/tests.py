@@ -12,6 +12,7 @@ class PracticeTests(unittest.TestCase):
 			self.assertEqual(work.ex_2(4,5,6), answer)
 			self.assertEqual(work.ex_2(6,2,4), answer)
 			self.assertEqual(work.ex_2(2,4,6), answer)
+			self.assertEqual(work.ex_2(4,6,2), answer)
 		except NotImplementedError:
 			raise NotImplementedError("Not answered yet.")
 		
@@ -52,11 +53,10 @@ class PracticeTests(unittest.TestCase):
 	def test_ex_6(self):
 		try:
 			self.assertEqual(work.ex_6([1,2,3,4,5]), 3)
-			self.assertEqual(work.ex_6([20,22,24,56]), 30.5)
-			self.assertEqual(work.ex_6([1,2]), 1.5)
-			self.assertEqual(work.ex_6([1]), 1)
-			self.assertEqual(work.ex_6([1,1,1,1,1,1,1,1,1,1]), 1)
-			self.assertEqual(work.ex_6([1000, 1000, 1002, 1002]), 1001)
+			self.assertEqual(work.ex_6([1,2,3,4,5,6]), 3.5)
+			self.assertEqual(work.ex_6([1,2,3,4,10]), 4)
+			with self.assertRaises(ZeroDivisionError):
+				work.ex_6([])
 		except NotImplementedError:
 			raise NotImplementedError("Not answered yet.")
 			

@@ -18,7 +18,7 @@ def ex_5(v,w,x,y,z):
 
 # FOR LOOPS
 def ex_6(l):
-	raise NotImplementedError("Not Implemented")
+	return sum(l)/len(l)
 
 def ex_7(l, m):
 	raise NotImplementedError("Not Implemented")
