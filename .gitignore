@@ -1,10 +1,13 @@
 Practice/answers.py
 Practice/work.py
 **/__pycache__/
-.DS_STORE
+.DS_Store
 API/**/key.pem
 API/Qandl/key.pem
 API/key.pem
 API/FRED/key.pem
 *.xlsx
 **/*.xlsx
+**/.vscode
+**/.DS_Store
+**/**/__pycache__/
