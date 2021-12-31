@@ -1,5 +1,5 @@
 import csv
-import sqlite3
+import sqlutil
 
 def parse_csv_file(filename):
 	""" the parse file takes a string variable called filename
@@ -49,14 +49,6 @@ def parse_csv_file(filename):
 		# return the cleaned data
 		return data
 
-def create_connection(db_file):
-	""" create a database connection to the SQLite database
-	    specified by the db_file
-	:param db_file: database file
-	:return: Connection object or None
-	"""
-	return sqlite3.connect(db_file)
-  
 def create_birth_rates_table(conn):
   query = '''
 		CREATE TABLE IF NOT EXISTS births (
@@ -90,7 +82,7 @@ if __name__ == "__main__":
   # read data from csv file
 	data = parse_csv_file("births.csv")
 	# create connection to database file
-	conn = create_connection("births.db")
+	conn = sqlutil.create_connection("births.db")
 	# create a table within the database
 	create_birth_rates_table(conn)
 	# insert every row of data into the new table
